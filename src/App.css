@@ -1,0 +1,9 @@
+.background-style {
+    background-image: url('./assets/slider-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+  }
+  .navbar-height {
+    height: 80px; /* Fixed height for Navbar */
+  }
