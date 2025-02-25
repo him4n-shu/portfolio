@@ -89,7 +89,7 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* Skills Section - Full Width */}
+        {/* Skills Section  */}
         <div className="w-full mt-8">
           <Skills />
         </div>

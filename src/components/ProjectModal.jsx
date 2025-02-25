@@ -5,12 +5,10 @@ import { createPortal } from 'react-dom';
 const ProjectModal = ({ project, isOpen, onClose }) => {
   if (!isOpen) return null;
 
-  // Lock scroll and manage focus when modal opens
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
     document.body.style.overflow = 'hidden';
     
-    // Focus management
     const modal = document.querySelector('[role="dialog"]');
     if (modal) {
       modal.focus();
@@ -18,7 +16,6 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       if (closeButton) closeButton.focus();
     }
 
-    // Re-enable scroll when modal closes
     return () => {
       document.body.style.overflow = originalStyle;
     };

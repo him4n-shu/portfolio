@@ -1,9 +1,12 @@
 .background-style {
-    background-image: url('./assets/slider-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-  }
+  background-image: url('./assets/slider-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  width: 100vw;
+}
+
   .navbar-height {
     height: 80px; 
   }

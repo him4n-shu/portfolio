@@ -2,17 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
 import { FaLinkedin, FaGithub, FaFacebook, FaInstagram } from 'react-icons/fa';
-import profilePic from '../assets/profile-pic.png';
+import profilePic from '../assets/profile_pic.png';
 
 const Herosection = () => {
   const handleScrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
-      const navHeight = document.querySelector("nav")?.offsetHeight || 0; // Account for Navbar height
-      const targetOffset = contactSection.offsetTop - navHeight; // Adjust for fixed Navbar
+      const navHeight = document.querySelector("nav")?.offsetHeight || 0; 
+      const targetOffset = contactSection.offsetTop - navHeight; 
       window.scrollTo({
         top: targetOffset,
-        behavior: 'smooth', // Smooth scroll animation
+        behavior: 'smooth', 
       });
     }
   };
@@ -23,7 +23,7 @@ const Herosection = () => {
       className="flex flex-col md:flex-row items-center justify-center min-h-screen text-white bg-gradient-to-b from-transparent to-gray-900/50 p-8"
       role="banner"
     >
-      {/* Left Section with Animation */}
+      {/* Left Section */}
       <motion.div 
         initial={{ opacity: 0, x: -100 }} 
         animate={{ opacity: 1, x: 0 }} 
@@ -74,7 +74,7 @@ const Herosection = () => {
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 1, delay: 1.1 }} 
           className="mt-6 px-6 py-2 bg-green-500 rounded-lg text-lg font-semibold hover:bg-green-600 hover:shadow-md transition-all duration-300 relative group"
-          onClick={handleScrollToContact} // Updated to use the custom scroll function
+          onClick={handleScrollToContact} 
           aria-label="Scroll to Contact Himanshu Kumar"
         >
           SAY HELLO
@@ -84,22 +84,22 @@ const Herosection = () => {
         </motion.button>
       </motion.div>
 
-      {/* Right Section: Profile Picture and Social Media Icons */}
+      {/* Right Section */}
       <div className="flex items-center mt-8 md:mt-0">
-        {/* Profile Picture (Left) */}
-        <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 overflow-hidden rounded-full mr-6 sm:mr-0 sm:mb-6">
+        {/* Profile Picture */}
+        <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 overflow-hidden rounded-full mr-6 sm:mr-0 sm:mb-6">
           <img
             src={profilePic}
             alt="Himanshu Kumar"
             loading="lazy"
             onError={(e) => {
-              e.target.src = 'path/to/fallback-image.png'; // Replace with an actual fallback image path
+              e.target.src = '../assets/profile-pic.png'; 
             }}
             className="w-full h-full object-cover grayscale transition-all duration-500 hover:grayscale-0 hover:shadow-lg hover:scale-105"
           />
         </div>
 
-        {/* Social Media Section (Vertical, to the right of profile pic) */}
+        {/* Social Media Section */}
         <div className="flex flex-col space-y-4">
           <a href="https://www.facebook.com/profile.php?id=100010182331281" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-300 hover:text-green-500 transition hover:scale-110">
             <FaFacebook size={24} />

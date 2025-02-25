@@ -11,10 +11,9 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const observerRef = useRef(null); // Ref to store the observer instance
-  const sectionsRef = useRef([]); // Ref to store observed sections
+  const observerRef = useRef(null); 
+  const sectionsRef = useRef([]);
 
-  // Memoize navigation data to prevent unnecessary re-renders
   const navigation = useMemo(() => [
     { name: "Home", href: "/#hero" },
     { name: "About", href: "/#about" },
@@ -41,15 +40,14 @@ const Navbar = () => {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-40% 0px", // Adjusted for earlier detection
-      threshold: 0.1, // Lower threshold for sensitivity
+      rootMargin: "-40% 0px", 
+      threshold: 0.1, 
     };
 
     const handleIntersect = (entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const sectionId = entry.target.id;
-          console.log(`Intersecting: ${sectionId}`); // Debug log
+          const sectionId = entry.target.id; 
           const navItem = navigation.find(item => item.href === `/#${sectionId}`);
           if (navItem) {
             setActive(navItem.name);
@@ -62,7 +60,6 @@ const Navbar = () => {
 
     observerRef.current = new IntersectionObserver(handleIntersect, observerOptions);
 
-    // Observe sections when they become available
     const observeSections = () => {
       const sections = ['hero', 'about', 'works', 'contact'];
       sections.forEach(id => {
@@ -70,51 +67,45 @@ const Navbar = () => {
         if (section && !sectionsRef.current.includes(id)) {
           observerRef.current.observe(section);
           sectionsRef.current.push(id);
-          console.log(`Observing section: ${id}`); // Debug log
         } else if (!section) {
-          console.warn(`Section with id "${id}" not found. Ensure it exists in your components.`); // Debug warning
+          console.warn(`Section with id "${id}" not found. Ensure it exists in your components.`); 
         }
       });
     };
 
-    // Initial observation
     observeSections();
 
-    // Re-observe on route changes, scroll, or DOM updates
     const observerCallback = () => {
       if (observerRef.current) {
         observerRef.current.disconnect();
       }
-      sectionsRef.current = []; // Reset observed sections
+      sectionsRef.current = []; 
       observeSections();
     };
 
-    // Trigger re-observation on route changes, scroll, and window resize
     const handleEvents = () => observerCallback();
     window.addEventListener('resize', handleEvents);
-    window.addEventListener('scroll', handleEvents); // Re-observe on scroll
+    window.addEventListener('scroll', handleEvents); 
     const unlisten = () => {
       window.removeEventListener('resize', handleEvents);
       window.removeEventListener('scroll', handleEvents);
     };
 
-    // Clean up observer and event listeners
     return () => {
       if (observerRef.current) {
         observerRef.current.disconnect();
       }
       unlisten();
-      sectionsRef.current = []; // Clean up observed sections
+      sectionsRef.current = []; 
     };
-  }, [navigation, location]); // Re-run on route changes
+  }, [navigation, location]); 
 
   const handleDownload = () => {
     setIsLoading(true);
-    // The CV file is in public as Himanshu_CV.pdf
-    const cvFile = '/Himanshu_CV.pdf'; // Points to your CV in the public directory
+    const cvFile = '/Himanshu_CV.pdf'; 
     const link = document.createElement('a');
     link.href = cvFile;
-    link.download = 'Himanshu_CV.pdf'; // Matches the file name for clarity
+    link.download = 'Himanshu_CV.pdf'; 
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -144,9 +135,9 @@ const Navbar = () => {
   useEffect(() => {
     const path = location.pathname;
     if (path === '/') {
-      setActive("Home"); // Ensure Home is active on root path
+      setActive("Home"); 
     } else if (path === '/works') {
-      setActive("Works"); // Ensure Works is active on /works route
+      setActive("Works"); 
     } else {
       const currentNav = navigation.find(item => item.href === path);
       if (currentNav) {
