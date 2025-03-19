@@ -4,7 +4,7 @@ import ProjectModal from '../components/ProjectModal';
 
 // Import project images
 import comicCrafterImg from '../assets/project-image/comic-crafter-ai.png';
-import passGeneratorImg from '../assets/project-image/pass-generator.png';
+import streamNestImg from '../assets/project-image/streamNestImg.png';
 import spotifyPlayerImg from '../assets/project-image/spotify-music-player.png';
 
 const Works = () => {
@@ -24,16 +24,16 @@ const Works = () => {
       github: 'https://github.com/him4n-shu/comic_crafter_ai'
     },
     {
-      category: 'Frontend',
-      title: 'Password Generator',
-      description: 'Secure password generator tool',
-      longDescription: 'Generates random passwords with customizable criteria like length, uppercase, numbers, and special characters.',
-      image: passGeneratorImg,
-      type: 'Web Tool',
-      client: 'Open Source',
-      tools: 'HTML, CSS, JavaScript',
-      tags: ['Security', 'Web'],
-      github: 'https://github.com/him4n-shu/Password-Generator'
+      "category": "Frontend",
+      "title": "StreamNest",
+      "description": "Legal movie streaming website",
+      "longDescription": "A dark-themed movie streaming platform built using React. Features smooth UI, categorized content, and responsive design.",
+      "image": streamNestImg,
+      "type": "Web Application",
+      "client": "Open Source",
+      "tools": "React, Vite, Tailwind CSS",
+      "tags": ["Streaming", "Web", "Entertainment"],
+      "github": "https://github.com/him4n-shu/Stream_Nest"
     },
     {
       category: 'Frontend',
